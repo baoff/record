@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd ">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!--
+		<property name="url" value="jdbc:mysql://localhost:3306/record?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root" />
+		<property name="password" value="baoff"/>
+		
+		
+		<property name="url" value="jdbc:mysql://10.196.81.113:3306/yd_order?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root" />
+		<property name="password" value="ydbfwz00"/>
+		-->
+		<property name="url" value="jdbc:mysql://rds6n9rhtm7n7xc2505y.mysql.rds.aliyuncs.com:3306/telematics?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="tmcsc" />
+		<property name="password" value="Tmcscdb00"/>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan"
+			value="com.foot.record.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5Dialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="eventListeners">
+			<map>
+				<entry key="pre-update">
+					<bean
+						class="org.hibernate.validator.event.ValidatePreUpdateEventListener" />
+				</entry>
+				<entry key="pre-insert">
+					<bean
+						class="org.hibernate.validator.event.ValidatePreInsertEventListener" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 事务处理-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

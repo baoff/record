@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+	<!-- 模型的扫描包，包括角色和用户 -->
+	<context:component-scan
+		base-package="com.foot.record.entity">
+	</context:component-scan>
+	
+
+	<!-- 与Controller相关的配置 -->
+	<context:component-scan
+		base-package="com.foot.record.controller">
+	</context:component-scan>
+	
+
+	<!-- 针对站点的业务逻辑层的相关配置 -->
+	<context:component-scan
+		base-package="com.foot.record.service">
+	</context:component-scan>
+	
+
+	<!-- 针对站点的DAL实现的相关配置 -->
+	<context:component-scan
+		base-package="com.foot.record.dao.impl">
+	</context:component-scan>
+	
+		<!-- 视图处理支持相关的技术 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1048576"></property>
+		<property name="maxInMemorySize" value="4096"/>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/record?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root" />
+		<property name="password" value="baoff"/>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan"
+			value="com.foot.record.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5Dialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="eventListeners">
+			<map>
+				<entry key="pre-update">
+					<bean
+						class="org.hibernate.validator.event.ValidatePreUpdateEventListener" />
+				</entry>
+				<entry key="pre-insert">
+					<bean
+						class="org.hibernate.validator.event.ValidatePreInsertEventListener" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 事务处理-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>
