@@ -32,7 +32,7 @@ public class Record implements Serializable{
 	private String registAddress;//注册地址
 	private String postalAddress;//通讯地址
 	private String contacts;//联系人
-	private String street;//街道
+	private String street;//街道--招商人
 	private String addedTax;// 增值税
 	private String incomeTax;//所得税
 	private String manageTax;//管理费
@@ -40,7 +40,7 @@ public class Record implements Serializable{
 	private String phone;//电话
 	private int customerType;// 客户类别：1,成交客户，2,商讨客户
 	private Date initDate;//创建时间
-	private String wxNumber;//微信号
+	private String wxNumber;//微信号--邀约
 	private String orderNumber;//订单号
 	private int status;  // 1,已完成，2,注册中
 	private int star;

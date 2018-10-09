@@ -308,7 +308,7 @@
 				
 				<td style="width:15%; text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;街道: 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;招商人: 
 				</span>
 				<input style="width:60%" type="text"
 					id="street" name="street"
@@ -372,7 +372,7 @@
 				<tr>
 				<td style="width:15%;text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;&nbsp;微信号:  
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀约:  
 				</span>
 				<input style="width:60%" type="text"
 					id="postalAddressid" name="wxNumber"
@@ -480,14 +480,14 @@
 				<th scope="col">注册地址</th>
 				<th scope="col">通讯地址</th>
 				<th scope="col">联系人</th>
-				<th scope="col">街道</th>
+				<th scope="col">招商人</th>
 				<th scope="col">增值税</th>
 				<th scope="col">所得税</th>
 				<th scope="col">管理费</th>
 				<th scope="col">返税</th>
 				<th scope="col">电话</th>
 				<th scope="col">客户类别</th>
-				<th scope="col">微信号</th>
+				<th scope="col">邀约</th>
 				<th scope="col">订单号</th>
 				<th scope="col">星级</th>
 				<th scope="col">状态</th>

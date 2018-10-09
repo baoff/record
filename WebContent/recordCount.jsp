@@ -83,7 +83,7 @@
 				</td>
 				<td style="width:15% ;text-align: left">
 					<span style="width: 40%;text-align: right">
-						微信号: 
+						邀约: 
 					</span>
 					<input style="width:60%" type="text"
 					id="wxNumberid" name="wxNumber"

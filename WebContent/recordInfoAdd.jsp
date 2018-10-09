@@ -173,7 +173,7 @@
 					</td>
 					<td>
 						<label>
-							街道
+							招商人
 						</label>
 					</td>
 					<td style="text-align: left">
@@ -228,7 +228,7 @@
 					</td>
 					<td>
 						<label>
-							微信号
+							邀约
 						</label>
 					</td>
 					<td style="text-align: left">
