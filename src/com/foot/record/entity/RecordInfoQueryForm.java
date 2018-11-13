@@ -22,6 +22,8 @@ public class RecordInfoQueryForm {
 	private String wxNumber;
 	private String orderNumber;
 	private int star=-1;
+	private int returnTaxPercentage =-1;
+	private int orderPercentage = -1;
 	public int getStar() {
 		return star;
 	}
@@ -138,4 +140,17 @@ public class RecordInfoQueryForm {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	public int getReturnTaxPercentage() {
+		return returnTaxPercentage;
+	}
+	public void setReturnTaxPercentage(int returnTaxPercentage) {
+		this.returnTaxPercentage = returnTaxPercentage;
+	}
+	public int getOrderPercentage() {
+		return orderPercentage;
+	}
+	public void setOrderPercentage(int orderPercentage) {
+		this.orderPercentage = orderPercentage;
+	}
+	
 }

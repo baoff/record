@@ -373,6 +373,8 @@ public class RecordInfoController extends BaseController {
 		String startDate = form.getStartDate();
 		String endDate = form.getEndDate();
 		String wxNumber = form.getWxNumber();
+		int returnTaxPercentage = form.getReturnTaxPercentage();
+		int orderPercentage = form.getOrderPercentage();
 //		int status = form.getStatus();
 		// ²éÑ¯ÊıÁ¿
 		StringBuffer sb = new StringBuffer();
@@ -395,6 +397,19 @@ public class RecordInfoController extends BaseController {
 		}
 		if (customerType == 20) {
 			sb.append(" and customerType >0");
+		}
+		
+		if (returnTaxPercentage > 0 && returnTaxPercentage < 20) {
+			sb.append(" and returnTaxPercentage= " + returnTaxPercentage);
+		}
+		if (returnTaxPercentage == 20) {
+			sb.append(" and returnTaxPercentage >0");
+		}
+		if (orderPercentage > 0 && orderPercentage < 20) {
+			sb.append(" and orderPercentage= " + orderPercentage);
+		}
+		if (orderPercentage == 20) {
+			sb.append(" and orderPercentage >0");
 		}
 		if (startDate != null && startDate.trim().length() > 0) {
 			sb.append(" and initDate >=str_to_date('" + startDate + "','%Y-%m-%d %H:%I:%S')");

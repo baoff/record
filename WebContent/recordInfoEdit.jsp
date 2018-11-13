@@ -136,7 +136,7 @@
 				<tr>
 					<td>
 						<label>
-							开单部门
+							原单位
 						</label>
 					</td>
 					<td style="text-align: left">
@@ -144,7 +144,7 @@
 					</td>
 					<td>
 						<label>
-							区域
+							新设立名
 						</label>
 					</td>
 					<td style="text-align: left">
@@ -261,6 +261,32 @@
 							<form:option value="-1">--请选择--</form:option>
 							<form:option value="1">成交客户</form:option>
 							<form:option value="2">商讨客户</form:option>
+						</form:select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							返税提成
+						</label>
+					</td>
+					<td style="text-align: left">
+						<form:select path="returnTaxPercentage">
+							<form:option value="-1">--请选择--</form:option>
+							<form:option value="1">已支付</form:option>
+							<form:option value="2">未支付</form:option>
+						</form:select>
+					</td>
+					<td>
+						<label>
+							成单提成
+						</label>
+					</td>
+					<td style="text-align: left">
+						<form:select path="orderPercentage">
+							<form:option value="-1">--请选择--</form:option>
+							<form:option value="1">已支付</form:option>
+							<form:option value="2">未支付</form:option>
 						</form:select>
 					</td>
 				</tr>

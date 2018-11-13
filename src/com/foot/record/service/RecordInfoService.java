@@ -79,6 +79,8 @@ public class RecordInfoService {
 		String orderNumber = recordForm.getOrderNumber();
 		int status = recordForm.getStatus();
 		int star = recordForm.getStar();
+		int returnTaxPercentage = recordForm.getReturnTaxPercentage();// 返税提成
+		int orderPercentage = recordForm.getOrderPercentage(); //成单提成
 		String queryCount = "select count(*) from Record where 1=1";
 		String queryList = " 1 = 1";
 		StringBuffer sb = new StringBuffer();
@@ -135,6 +137,12 @@ public class RecordInfoService {
 		}
 		if(star >-1 ){
 			sb.append(" and star =").append(star);
+		}
+		if(returnTaxPercentage >-1 ){
+			sb.append(" and returnTaxPercentage =").append(returnTaxPercentage);
+		}
+		if(orderPercentage >-1 ){
+			sb.append(" and orderPercentage =").append(orderPercentage);
 		}
 		sb.append(" order by initDate desc");
 		List<Record> orders = recordDao.queryList(queryCount + sb.toString(), queryList + sb.toString(), null, page);

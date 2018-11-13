@@ -123,6 +123,8 @@ public class ReadExcel {
 			String orderNumber = null;
 			int status = -1;
 			int star = 0;
+			int returnTaxPercentage =-1;
+			int orderPercentage =-1;
 			Row row = sheet.getRow(r);
 			if (row == null) {
 				continue;
@@ -236,6 +238,39 @@ public class ReadExcel {
 							
 						}
 					}else if(c==10){
+						//返税提成
+						String type = null;
+						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+							type = cell.getNumericCellValue()+"".trim();
+							type = type.substring(0,type.indexOf(".0"));
+						}else {
+							type = cell.getStringCellValue();
+						}
+						if(type != null ){
+							if(type.equals("已支付")){
+								returnTaxPercentage = 1;
+							}else if(type.equals("未支付")){
+								returnTaxPercentage = 2;
+							}
+						}
+					}
+					else if(c==11){
+						//返税提成
+						String type = null;
+						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+							type = cell.getNumericCellValue()+"".trim();
+							type = type.substring(0,type.indexOf(".0"));
+						}else {
+							type = cell.getStringCellValue();
+						}
+						if(type != null ){
+							if(type.equals("已支付")){
+								orderPercentage = 1;
+							}else if(type.equals("未支付")){
+								orderPercentage = 2;
+							}
+						}
+					}else if(c==12){
 						//电话
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
 							phone = cell.getNumericCellValue()+"".trim();
@@ -252,7 +287,7 @@ public class ReadExcel {
 	                            phone = bd.toString();
 							}
 						}
-					}else if(c==11){
+					}else if(c==13){
 						//客户类型
 						String type = null;
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
@@ -268,7 +303,7 @@ public class ReadExcel {
 								customerType = 2;
 							}
 						}
-					}else if(c==12){
+					}else if(c==14){
 						//微信号
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
 							wxNumber = cell.getNumericCellValue()+"".trim();
@@ -287,7 +322,7 @@ public class ReadExcel {
 						}
 					}
 					
-					else if(c==13){
+					else if(c==15){
 						//订单号
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
 							orderNumber = cell.getNumericCellValue()+"".trim();
@@ -303,7 +338,7 @@ public class ReadExcel {
 	                            orderNumber = bd.toString();
 							}
 						}
-					}else if(c==14){
+					}else if(c==16){
 						//状态
 						String st="";
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
@@ -319,7 +354,7 @@ public class ReadExcel {
 							star = Integer.parseInt(st);
 						}
 						
-					}else if(c==15){
+					}else if(c==17){
 						//状态
 						String st="";
 						if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
@@ -356,6 +391,8 @@ public class ReadExcel {
 			record.setOrderNumber(orderNumber);
 			record.setStar(star);
 			record.setStatus(status);
+			record.setReturnTaxPercentage(returnTaxPercentage);
+			record.setOrderPercentage(orderPercentage);
 			record.setInitDate(new Date());
 			// 添加到list
 			recordList.add(record);

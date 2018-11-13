@@ -8,6 +8,8 @@ public class CountForm {
 	private String endDate;
 	private String wxNumber;
 	private int status=-1 ;
+	private int returnTaxPercentage;
+	private int orderPercentage;
 	public String getDepartment() {
 		return department;
 	}
@@ -50,4 +52,17 @@ public class CountForm {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	public int getReturnTaxPercentage() {
+		return returnTaxPercentage;
+	}
+	public void setReturnTaxPercentage(int returnTaxPercentage) {
+		this.returnTaxPercentage = returnTaxPercentage;
+	}
+	public int getOrderPercentage() {
+		return orderPercentage;
+	}
+	public void setOrderPercentage(int orderPercentage) {
+		this.orderPercentage = orderPercentage;
+	}
+	
 }

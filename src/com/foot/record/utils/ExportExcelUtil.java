@@ -88,12 +88,28 @@ public class ExportExcelUtil {
 			cell = row.createCell(9);
 			cell.setCellValue(record.getReturnTax());
 			cell.setCellStyle(cs);
-
+			
 			cell = row.createCell(10);
+			if(record.getReturnTaxPercentage()==1){
+				cell.setCellValue("已支付");
+			}else if(record.getReturnTaxPercentage()==2){
+				cell.setCellValue("未支付");
+			}
+			cell.setCellStyle(cs);
+			cell = row.createCell(11);
+			if(record.getOrderPercentage()==1){
+				cell.setCellValue("已支付");
+			}else if(record.getOrderPercentage()==2){
+				cell.setCellValue("未支付");
+			}
+			cell.setCellStyle(cs);
+			
+
+			cell = row.createCell(12);
 			cell.setCellValue(record.getPhone());
 			cell.setCellStyle(cs);
 
-			cell = row.createCell(11);
+			cell = row.createCell(13);
 			if(record.getCustomerType()==1){
 				cell.setCellValue("成交客户");
 			}else if(record.getCustomerType()==2){
@@ -101,19 +117,19 @@ public class ExportExcelUtil {
 			}
 			cell.setCellStyle(cs);
 			
-			cell = row.createCell(12);
+			cell = row.createCell(14);
 			cell.setCellValue(record.getWxNumber());
 			cell.setCellStyle(cs);
 			
-			cell = row.createCell(13);
+			cell = row.createCell(15);
 			cell.setCellValue(record.getOrderNumber());
 			cell.setCellStyle(cs);
 			
-			cell = row.createCell(14);
+			cell = row.createCell(16);
 			cell.setCellValue(record.getStar()+"星");
 			cell.setCellStyle(cs);
 			
-			cell = row.createCell(15);
+			cell = row.createCell(17);
 			String status = "注册中";
 			if (record.getStatus() == 1) {
 				status = "已完成";
@@ -123,7 +139,7 @@ public class ExportExcelUtil {
 			cell.setCellValue(status);
 			cell.setCellStyle(cs);
 			
-			cell = row.createCell(16);
+			cell = row.createCell(18);
 			if (record.getInitDate()!= null) {
 				cell.setCellValue(record.getInitDate());
 				CellStyle csa = wb.createCellStyle();

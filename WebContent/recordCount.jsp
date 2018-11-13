@@ -67,7 +67,7 @@
 			<tr>
 				<td style="width:15% ;text-align: left">
 					<span style="width: 40%;text-align: right">
-						开单部门: 
+						&nbsp;&nbsp;&nbsp;&nbsp;原单位: 
 					</span>
 					<input style="width:60%" type="text"
 					id="departmentid" name="department"
@@ -75,7 +75,7 @@
 				</td>
 				<td style="width:15% ;text-align: left">
 					<span style="width: 40%;text-align: right">
-						区域: 
+						新设立名: 
 					</span>
 					<input style="width:60%" type="text"
 					id="regionid" name="region"
@@ -105,7 +105,42 @@
 							<c:if test="${countForm.customerType==2}">selected = "selected"</c:if>>商讨客户</option>
 					</select>
 				</td>
-						<td style="width:15% ;text-align: left">
+				<td style="width:15% ;text-align: left">
+				<span style="width: 40%;text-align: right">
+					返税提成: 
+				</span>
+					<select style="width:60%" name="returnTaxPercentage"
+						id="returnTaxPercentageid">
+						<option value="-1"
+							<c:if test="${countForm.returnTaxPercentage==-1}">selected = "selected"</c:if>>--请选择--</option>
+						<option value="20"
+							<c:if test="${countForm.returnTaxPercentage==20}">selected = "selected"</c:if>>全部</option>
+						<option value=1	
+							<c:if test="${countForm.returnTaxPercentage==1}">selected = "selected"</c:if>>已支付</option>
+						<option value="2"
+							<c:if test="${countForm.returnTaxPercentage==2}">selected = "selected"</c:if>>未支付</option>
+					</select>
+				</td>
+					<td style="width:15% ;text-align: left">
+				<span style="width: 40%;text-align: right">
+					成单提成: 
+				</span>
+					<select style="width:60%" name="orderPercentage"
+						id="orderPercentageid">
+						<option value="-1"
+							<c:if test="${countForm.orderPercentage==-1}">selected = "selected"</c:if>>--请选择--</option>
+						<option value="20"
+							<c:if test="${countForm.orderPercentage==20}">selected = "selected"</c:if>>全部</option>
+						<option value=1	
+							<c:if test="${countForm.orderPercentage==1}">selected = "selected"</c:if>>已支付</option>
+						<option value="2"
+							<c:if test="${countForm.orderPercentage==2}">selected = "selected"</c:if>>未支付</option>
+					</select>
+				</td>
+						
+				</tr>
+				<tr>
+					<td style="width:15% ;text-align: left">
 				<span style="width: 40%;text-align: right">
 					创建日期:
 				</span>	 
@@ -122,6 +157,10 @@
 					id="cal2" name="endDate"
 					value="${countForm.endDate}" placeholder="选择日期" />
 				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 				</tr>
 				
 				<tr>

@@ -264,7 +264,7 @@
 			<tr>
 				<td style="width:15% ;text-align: left">
 				<span style="width: 40%;text-align: right">
-					开单部门: 
+					&nbsp;&nbsp;&nbsp;原单位: 
 				</span>
 				<input style="width:60%" type="text"
 					id="departmentid" name="department"
@@ -273,7 +273,7 @@
 				
 				<td style="width:15% ;text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域:
+					新设立名:
 				</span>
 				 <input style="width:60%" type="text"
 					id="regionid" name="region" value="${recordInfoForm.region}" />
@@ -299,7 +299,7 @@
 				
 				<td style="width:15%; text-align: left">
 				<span style="width: 40%;text-align: right">
-					联系人: 
+					&nbsp;&nbsp;&nbsp;联系人: 
 				</span>
 				<input  style="width:60%" type="text"
 					id="contactsid" name="contacts"
@@ -318,14 +318,14 @@
 			<tr>
 				<td style="width:15%; text-align: left">
 					<span style="width: 40%;text-align: right">
-						&nbsp;&nbsp;&nbsp;&nbsp;增值税: 
+						&nbsp;&nbsp;&nbsp;增值税: 
 					</span>
 					<input style="width:60%" type="text" id="addedTaxid" name="addedTax" value="${recordInfoForm.addedTax  }"/>
 				</td>
 					
 							<td style="width:15%; text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;所得税: 
+					&nbsp;&nbsp;&nbsp;&nbsp;所得税: 
 				</span>
 				<input style="width:60%" type="text" id="incomeTaxid" name="incomeTax" value="${recordInfoForm.incomeTax }" />
 				</td>
@@ -341,7 +341,7 @@
 					
 					<td style="width:15%; text-align: left">
 						<span style="width: 40%;text-align: right">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返税: 
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返税: 
 						</span>
 					<input style="width:60%" type="text"
 						id="returnTaxid" name="returnTax"
@@ -350,7 +350,7 @@
 					
 					<td style="width:15%; text-align: left">
 					<span style="width: 40%;text-align: right">
-						&nbsp;&nbsp;&nbsp;&nbsp;电话: 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话: 
 					</span>
 					<input style="width:60%" type="text"
 						id="phoneid" name="phone" value="${recordInfoForm.phone}" />
@@ -358,7 +358,7 @@
 					
 					<td style="width:15%; text-align: left">
 					<span style="width: 40%;text-align: right">
-						&nbsp;客户类型: 
+						&nbsp;&nbsp;客户类型: 
 					</span>	
 					<select style="width:60%" name="customerType"
 						id="customerType">
@@ -372,7 +372,7 @@
 				<tr>
 				<td style="width:15%;text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀约:  
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀约:  
 				</span>
 				<input style="width:60%" type="text"
 					id="postalAddressid" name="wxNumber"
@@ -381,7 +381,7 @@
 				
 				<td style="width:15%; text-align: left">
 				<span style="width: 40%;text-align: right">
-					&nbsp;&nbsp;&nbsp;订单号: 
+					&nbsp;&nbsp;&nbsp;&nbsp;订单号: 
 				</span>
 				<input  style="width:60%" type="text"
 					id="contactsid" name="orderNumber"
@@ -403,20 +403,27 @@
 					</td>
 					<td style="width:15%; text-align: left">
 					<span style="width: 40%;text-align: right">
-					创建时间: 
-					</span>
-					<input style="width:60%" type="text"
-						id="cal1" name="initDateStart"
-						value="${recordInfoForm.initDateStart}"
-						placeholder="选择日期" />
+						返税提成: 
+					</span>	
+					<select style="width:60%" name="returnTaxPercentage"
+						id="returnTaxPercentageid">
+						<option value="-1" <c:if test="${recordInfoForm.returnTaxPercentage==-1}">selected = "selected"</c:if>>--请选择--</option>
+						<option value="1" <c:if test="${recordInfoForm.returnTaxPercentage==1}">selected = "selected"</c:if>>已支付</option>
+						<option value="2" <c:if test="${recordInfoForm.returnTaxPercentage==2}">selected = "selected"</c:if>>未支付</option>
+					</select>
 					</td>
+					
+					
 					<td style="width:15%; text-align: left">
 					<span style="width: 40%;text-align: right">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至: 
-					</span>
-					<input style="width:60%" type="text" id="cal2"
-						name="initDateEnd" value="${recordInfoForm.initDateEnd}"
-						placeholder="选择日期" />
+						成单提成: 
+					</span>	
+					<select style="width:60%" name="orderPercentage"
+						id="orderPercentageid">
+						<option value="-1" <c:if test="${recordInfoForm.orderPercentage==-1}">selected = "selected"</c:if>>--请选择--</option>
+						<option value="1" <c:if test="${recordInfoForm.orderPercentage==1}">selected = "selected"</c:if>>已支付</option>
+						<option value="2" <c:if test="${recordInfoForm.orderPercentage==2}">selected = "selected"</c:if>>未支付</option>
+					</select>
 					</td>
 					<td style="width:15%; text-align: left">
 						<span style="width: 40%;text-align: right">
@@ -438,6 +445,29 @@
 								<c:if test="${recordInfoForm.star==2}">selected = "selected"</c:if>>5星</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+						<td style="width:15%; text-align: left">
+					<span style="width: 40%;text-align: right">
+					创建时间: 
+					</span>
+					<input style="width:60%" type="text"
+						id="cal1" name="initDateStart"
+						value="${recordInfoForm.initDateStart}"
+						placeholder="选择日期" />
+					</td>
+					<td style="width:15%; text-align: left">
+					<span style="width: 40%;text-align: right">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至: 
+					</span>
+					<input style="width:60%" type="text" id="cal2"
+						name="initDateEnd" value="${recordInfoForm.initDateEnd}"
+						placeholder="选择日期" />
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
 					<tr>
 					<td></td>
@@ -467,7 +497,6 @@
 				</tr>
 		</form>
 	</table>
-	</div>
 	<table class="data" data-chart="line">
 		<thead>
 			<tr>
@@ -475,8 +504,8 @@
 				<th scope="col">全选<input type="checkbox" id="cas"
 					onclick="checkAllSchema()" name="checkAll" value="">
 				</th>
-				<th scope="col">开单部门</th>
-				<th scope="col">区域</th>
+				<th scope="col">原单位</th>
+				<th scope="col">新设立名</th>
 				<th scope="col">注册地址</th>
 				<th scope="col">通讯地址</th>
 				<th scope="col">联系人</th>
@@ -485,6 +514,8 @@
 				<th scope="col">所得税</th>
 				<th scope="col">管理费</th>
 				<th scope="col">返税</th>
+				<th scope="col">返税提成 </th>
+				<th scope="col">成单提成 </th>
 				<th scope="col">电话</th>
 				<th scope="col">客户类别</th>
 				<th scope="col">邀约</th>
@@ -496,7 +527,7 @@
 				<c:if test="${currentuser.role.name eq 'add' || currentuser.role.name eq 'manage' }">
 					<th scope="col">修改</th>
 				</c:if>
-				<<c:if test="${currentuser.role.name eq 'delete' || currentuser.role.name eq 'manage' }">
+				<c:if test="${currentuser.role.name eq 'delete' || currentuser.role.name eq 'manage' }">
 					<th scope="col">删除</th>
 				</c:if>
 			</tr>
@@ -516,6 +547,22 @@
 					<td>${record.incomeTax}</td>
 					<td>${record.manageTax }</td>
 					<td>${record.returnTax}</td>
+					<td>
+						<c:if test="${record.returnTaxPercentage==1 }">
+							已支付
+						</c:if>
+						<c:if test="${record.returnTaxPercentage==2 }">
+							未支付
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${record.orderPercentage==1 }">
+							已支付
+						</c:if>
+						<c:if test="${record.orderPercentage==2 }">
+							未支付
+						</c:if>
+					</td>
 					<td>${record.phone }</td>
 					<td>
 						<c:if test="${record.customerType==1 }">

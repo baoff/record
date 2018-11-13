@@ -27,12 +27,12 @@ import com.foot.record.utils.FrameworkBeansName;
 @Scope(FrameworkBeansName.BEAN_PROTOTYPE)
 public class Record implements Serializable{
 	private Long id ;
-	private String department;//部门
-	private String region;//区域
+	private String department;//原单位
+	private String region;//新设立名
 	private String registAddress;//注册地址
 	private String postalAddress;//通讯地址
 	private String contacts;//联系人
-	private String street;//街道--招商人
+	private String street;//街道-->招商人
 	private String addedTax;// 增值税
 	private String incomeTax;//所得税
 	private String manageTax;//管理费
@@ -44,6 +44,8 @@ public class Record implements Serializable{
 	private String orderNumber;//订单号
 	private int status;  // 1,已完成，2,注册中
 	private int star;
+	private int returnTaxPercentage; //返税提成 1，已支付;2,未支付
+	private int orderPercentage;// 成单提成1，已支付;2，未支付
 	private long operatorId;
 	private int backType;
 	private String nickname;
@@ -237,6 +239,22 @@ public class Record implements Serializable{
 	}
 	public void setStar(int star) {
 		this.star = star;
+	}
+	@Basic()
+	@Column(name="returnTaxPercentage",precision=2)
+	public int getReturnTaxPercentage() {
+		return returnTaxPercentage;
+	}
+	public void setReturnTaxPercentage(int returnTaxPercentage) {
+		this.returnTaxPercentage = returnTaxPercentage;
+	}
+	@Basic()
+	@Column(name="orderPercentage",precision=2)
+	public int getOrderPercentage() {
+		return orderPercentage;
+	}
+	public void setOrderPercentage(int orderPercentage) {
+		this.orderPercentage = orderPercentage;
 	}
 	
 }

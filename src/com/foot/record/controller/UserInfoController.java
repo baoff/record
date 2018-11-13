@@ -1,6 +1,7 @@
 package com.foot.record.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.foot.record.base.BaseController;
 import com.foot.record.entity.Role;
 import com.foot.record.entity.User;
+import com.foot.record.form.UserForm;
+import com.foot.record.page.PageBean;
 import com.foot.record.service.RoleInfoService;
 import com.foot.record.service.UserInfoService;
 import com.foot.record.utils.CheckMobile;
@@ -115,6 +119,65 @@ public class UserInfoController extends BaseController {
 			session.setAttribute("loginIsErro", "0");
 			return result;
 	}
+	
+	/**
+	 * 添加用户页面
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(params = "method=add_user_form")
+	public String createUser(ModelMap model, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		User currentuser = (User) session.getAttribute("currentuser");
+		if (currentuser == null) {
+			return "index.jsp";
+		}
+		User user = new User();
+		//加载权限
+		List<Role> roles = this.roleInfoService.queryRoles();
+		model.addAttribute("userInfoBean", user);
+		model.addAttribute("roles", roles);
+		return "addUser.jsp";
+	}
+	
+	@RequestMapping(params = "method=add_userinfo_action")
+	public String addUser(@ModelAttribute("userInfoBean") User from,ModelMap model,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		User currentuser = (User) session.getAttribute("currentuser");
+		if (currentuser == null) {
+			return "index.jsp";
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * 用户管理
+	 * @param form
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(params = "method=search_userInfo")
+	public String searchUser(@ModelAttribute("userInfoForm") UserForm form,ModelMap model, HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		User currentuser = (User)session.getAttribute("currentuser");
+		if(currentuser == null){
+			return "index.jsp";
+		}
+		PageBean page = new PageBean();
+		String currentPage = request.getParameter("currentPage");
+		if (currentPage != null) {
+			page.setCurrentPage(Integer.parseInt(currentPage));
+		}
+		List<User> users = this.userInfoService.getUsers(form, page);
+		model.addAttribute("page", page);
+		model.addAttribute("userLists", users);
+		model.addAttribute("userInfoForm", form);
+		return "userManage.jsp";
+	}
+	
 	
 	/**
 	 * 退出

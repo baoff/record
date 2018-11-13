@@ -1,5 +1,7 @@
 package com.foot.record.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -21,6 +23,10 @@ public class RoleInfoService {
 	
 	public Role getRole(long id){
 		return roleDao.find(id);
+	}
+	
+	public List<Role> queryRoles(){
+		return this.roleDao.queryList(null, "1=1", null, null);
 	}
 	
 	
