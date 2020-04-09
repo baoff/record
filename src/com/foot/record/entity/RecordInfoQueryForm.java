@@ -24,6 +24,7 @@ public class RecordInfoQueryForm {
 	private int star=-1;
 	private int returnTaxPercentage =-1;
 	private int orderPercentage = -1;
+	private long operatorId;
 	public int getStar() {
 		return star;
 	}
@@ -152,5 +153,10 @@ public class RecordInfoQueryForm {
 	public void setOrderPercentage(int orderPercentage) {
 		this.orderPercentage = orderPercentage;
 	}
-	
+	public long getOperatorId() {
+		return operatorId;
+	}
+	public void setOperatorId(long operatorId) {
+		this.operatorId = operatorId;
+	}
 }

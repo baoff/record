@@ -81,6 +81,7 @@ public class RecordInfoService {
 		int star = recordForm.getStar();
 		int returnTaxPercentage = recordForm.getReturnTaxPercentage();// 返税提成
 		int orderPercentage = recordForm.getOrderPercentage(); //成单提成
+		long operatorId = recordForm.getOperatorId();
 		String queryCount = "select count(*) from Record where 1=1";
 		String queryList = " 1 = 1";
 		StringBuffer sb = new StringBuffer();
@@ -137,6 +138,9 @@ public class RecordInfoService {
 		}
 		if(star >-1 ){
 			sb.append(" and star =").append(star);
+		}
+		if(operatorId > 0 ){
+			sb.append(" and operatorId =").append(operatorId);
 		}
 		if(returnTaxPercentage >-1 ){
 			sb.append(" and returnTaxPercentage =").append(returnTaxPercentage);

@@ -136,6 +136,7 @@ public class RecordInfoController extends BaseController {
 			return "index.jsp";
 		}
 		String roleName = currentuser.getRole().getName();
+		recordForm.setOperatorId(currentuser.getId());
 		int isexport = recordForm.getIsexport();
 		if (isexport == 1) {
 			// µ¼³ö
