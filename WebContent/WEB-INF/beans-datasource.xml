@@ -7,20 +7,10 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<!--
+
 		<property name="url" value="jdbc:mysql://localhost:3306/record?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="username" value="root" />
-		<property name="password" value="baoff"/>
-		
-		
-		<property name="url" value="jdbc:mysql://10.196.81.113:3306/yd_order?useUnicode=true&amp;characterEncoding=utf-8" />
-		<property name="username" value="root" />
-		<property name="password" value="ydbfwz00"/>
-		-->
-		<property name="url" value="jdbc:mysql://rds6n9rhtm7n7xc2505y.mysql.rds.aliyuncs.com:3306/telematics?useUnicode=true&amp;characterEncoding=utf-8" />
-		<property name="username" value="tmcsc" />
-		<property name="password" value="Tmcscdb00"/>
-		
+		<property name="password" value="record123S"/>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

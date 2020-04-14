@@ -483,8 +483,10 @@
 					</c:if>
 					</td>						
 					<td>
-						<input type="button" class="button stats-view tooltip"
-						original-title="View new registrations" onclick="exportExcel()" value="导出" />
+						<c:if test="${currentuser.role.name eq 'manage' }">
+							<input type="button" class="button stats-view tooltip"
+							original-title="View new registrations" onclick="exportExcel()" value="导出" />
+						</c:if>
 					</td>
 					<td>
 					<c:if test="${currentuser.role.name eq 'add' || currentuser.role.name eq 'manage' }">
@@ -516,7 +518,9 @@
 				<th scope="col">返税</th>
 				<th scope="col">返税提成 </th>
 				<th scope="col">成单提成 </th>
-				<th scope="col">电话</th>
+				<c:if test="${currentuser.loginName ne 'yuhaitang' && currentuser.loginName ne 'yuhaitang1' }">
+					<th scope="col">电话</th>
+				</c:if>
 				<th scope="col">客户类别</th>
 				<th scope="col">邀约</th>
 				<th scope="col">订单号</th>
@@ -563,7 +567,9 @@
 							未支付
 						</c:if>
 					</td>
-					<td>${record.phone }</td>
+					<c:if test="${currentuser.loginName ne 'yuhaitang' && currentuser.loginName ne 'yuhaitang1' }">
+						<td>${record.phone }</td>
+					</c:if>
 					<td>
 						<c:if test="${record.customerType==1 }">
 							成交客户

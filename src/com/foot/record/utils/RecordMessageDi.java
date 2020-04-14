@@ -16,7 +16,7 @@ public class RecordMessageDi {
 	}
 	
 	public static void main(String[] args) {
-		String str="123456";
+		String str="516213";
 		System.out.println(MD5Encoder(str));
 	}
 
